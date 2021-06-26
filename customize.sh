@@ -8,7 +8,7 @@ fi
 
 mkdir "/sdcard/Gorillaz-Injector"
 
-log=/sdcard/GIT/installation.log
+log=/sdcard/Gorillaz-Injector/installation.log
 echo "If this file is useless to you, you can delete it." >> $log
 
 awk '{print}' "$MODPATH"/common/git_banner
