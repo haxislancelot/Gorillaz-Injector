@@ -6,11 +6,13 @@
 
 </div>
 
-<div align="center">
+## Usage
+- If installing the module, install busybox or brutal-busybox for the module to work correctly!
+- When using some code, this module's file, credit me, Thank you.
+- I recommend using the most up-to-date Magisk Manager to use the module.
+- If you have any questions or need help, visit my [group](https://t.me/haxisprojects) on Telegram!
 
-<h3 align="bottom">Need help? Visit my group on Telegram! http://t.me/haxisprojects</h3>
-
-<div align="bottom">
+- Inject the Gorillaz!
 
 
 
