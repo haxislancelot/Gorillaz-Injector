@@ -8,7 +8,10 @@
 
 <div align="center">
 
-  <h3>
+<h3 align="bottom">Need help? Visit my group on Telegram! http://t.me/haxisprojects</h3>
+
+<div align="bottom">
+
 
 
 
