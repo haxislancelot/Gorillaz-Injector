@@ -2,6 +2,7 @@
 #
 # Terminal Utility Functions
 # by veez21
+# edited by haxislancelot @ GitHub
 #
 ##########################################################################################
 
@@ -50,8 +51,8 @@ elif [ -x $SYSTEM2/xbin/busybox ]; then
 elif [ -x $SYSTEM2/bin/busybox ]; then
   _bb=$SYSTEM2/bin/busybox
 else
-  echo "! Busybox not detected"
-  echo "Please install one (@osm0sis' busybox recommended)"
+  echo "- Busybox not detected"
+  echo "- Please install one (@osm0sis' busybox recommended)"
   false
 fi
 set_busybox $_bb
@@ -60,7 +61,7 @@ set_busybox $_bb
 _bbname="$($_bb | head -n1 | awk '{print $1,$2}')"
 BBok=true
 if [ "$_bbname" == "" ]; then
-  _bbname="BusyBox not found!"
+  _bbname="- BusyBox not found!"
   BBok=false
 fi
 
