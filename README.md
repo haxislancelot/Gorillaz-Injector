@@ -10,5 +10,5 @@
 
   <h3>
 
-    <a href="https://github.com/haxislancelot/Gorillaz-Injector">
+
 
