@@ -11,8 +11,12 @@ mkdir "/sdcard/Gorillaz-Injector"
 log=/sdcard/Gorillaz-Injector/installation.log
 echo "If this file is useless to you, you can delete it." >> $log
 
-awk '{print}' "$MODPATH"/common/git_banner
-sleep 2
+SKIPUNZIP=0
+unzip -qjo "$ZIPFILE" 'common/git-banner.sh' -d "$TMPDIR" >&2
+. "$TMPDIR"/git-banner.sh
+
+sleep 4
+ui_print ""
 ui_print "- Gorillaz-Injector is a full featured Magisk module to enhance your device experience,"
 ui_print "- Improve your gaming, ram and battery!"
 sleep 2
