@@ -1,4 +1,4 @@
-<h1 align="center">Gorillaz Injector</h1>
+<h1 align="center">Niko Tweaks</h1>
 
 <div align="center">
 
