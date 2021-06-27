@@ -1,4 +1,5 @@
 #!/system/bin/sh
+# Niko Tweaks created by haxislancelot @ GitHub, If you're going to use some code from my module, give me the credits, I'll be grateful.
 
 # Configure sqlite3
 sqlite_opt() {
