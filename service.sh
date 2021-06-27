@@ -1,8 +1,20 @@
 #!/system/bin/sh
 # Niko Tweaks created by haxislancelot @ GitHub, If you're going to use some code from my module, give me the credits, I'll be grateful.
 
+# Wait Boot Complete
+wait_boot_complete() {
+until [[ "$(getprop sys.boot_completed)" -eq 1 ]] || [[ "$(getprop dev.bootcomplete)" -eq 1 ]]; do
+       sleep 2
+done
+}
+
+wait_boot_complete
+
+# Time Extra
+sleep 20
+
 # Configure sqlite3
-sqlite_opt() {
+sqlite() {
 if [[ "$(find /system -name "sqlite3" -type f)" ]]; then
 for i in $(find /d* -iname "*.db"); do
 sqlite3 "$i" 'VACUUM;'
@@ -30,5 +42,7 @@ sqlite3 "$i" 'ANALYZE;'
 fi
 }
 
-# Run sqlite3
-sqlite_opt
+# Zip align
+
+# Run sqlite
+sqlite
