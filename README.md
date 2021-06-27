@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  <strong>Gorillaz Injector is a Magisk module Complete and Interactive that seeks a better mobile user experience.
+  <strong>Niko Tweaks is a Magisk module Complete and Interactive that seeks a better mobile user experience.
 
 </div>
 
@@ -12,7 +12,7 @@
 - I recommend using the most up-to-date Magisk Manager to use the module.
 - If you have any questions or need help, visit my [group](https://t.me/haxisprojects) on Telegram!
 
-- Inject the Gorillaz!
+- If you like my work, share it with your friends, family, girlfriend and colleagues!
 
 
 
