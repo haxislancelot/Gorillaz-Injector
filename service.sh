@@ -43,6 +43,23 @@ fi
 }
 
 # Zip align
+zipalign() {
+for DIR in /system/app/* /system/priv-app/* /system/product/app/* /system/product/overlay/* /data/app/* /system/product/priv-app/* /vendor/app/* /vendor/overlay/* /system_ext/app/* /system_ext/priv-app/* /product/app/* /product/priv-app/* /system/system_ext/app/* /system/system_ext/priv-app/*; do
+   cd $DIR
+   for APK in *.apk; do
+      zipalign -c 4 "$APK"
+      zipalign -f 4 "$APK" "/cache/$APK"
+        cp -af -p "/cache/$APK" "$APK"
+        rm -f "/cache/$APK"
+    done
+done
+}
+
+# Run zip align
+zipalign
 
 # Run sqlite
 sqlite
+
+# To check if service.sh was executed correctly
+setprop service.sh Executed 
