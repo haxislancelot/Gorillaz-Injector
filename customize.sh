@@ -1,5 +1,5 @@
 #!/system/bin/sh
-# Gorillaz Injector created by haxislancelot @ GitHub, If you're going to use some code from my module, give me the credits, I'll be grateful.
+# Niko Tweaks created by haxislancelot @ GitHub, If you're going to use some code from my module, give me the credits, I'll be grateful.
 DEBUG=true
 
 if [[ ! -e "/sdcard/Niko Logs" ]]; then
@@ -11,11 +11,19 @@ mkdir "/sdcard/Niko Logs"
 log=/sdcard/Niko Logs/installation.log
 echo "If this file is useless to you, you can delete it." >> $log
 
-SKIPUNZIP=0
-unzip -qjo "$ZIPFILE" 'common/niko-banner.sh' -d "$TMPDIR" >&2
-. "$TMPDIR"/niko-banner.sh
-
 sleep 4
+ui_print "╭━╮╱╭╮╭━━╮╭╮╭━╮╭━━━╮"
+ui_print "┃┃╰╮┃┃╰┫┣╯┃┃┃╭╯┃╭━╮┃"
+ui_print "┃╭╮╰╯┃╱┃┃╱┃╰╯╯╱┃┃╱┃┃"
+ui_print "┃┃╰╮┃┃╱┃┃╱┃╭╮┃╱┃┃╱┃┃"
+ui_print "┃┃╱┃┃┃╭┫┣╮┃┃┃╰╮┃╰━╯┃"
+ui_print "╰╯╱╰━╯╰━━╯╰╯╰━╯╰━━━╯"
+ui_print "╭━━━━╮╭╮╭╮╭╮╭━━━╮╭━━━╮╭╮╭━╮╭━━━╮"
+ui_print "┃╭╮╭╮┃┃┃┃┃┃┃┃╭━━╯┃╭━╮┃┃┃┃╭╯┃╭━╮┃"
+ui_print "╰╯┃┃╰╯┃┃┃┃┃┃┃╰━━╮┃┃╱┃┃┃╰╯╯╱┃╰━━╮"
+ui_print "╱╱┃┃╱╱┃╰╯╰╯┃┃╭━━╯┃╰━╯┃┃╭╮┃╱╰━━╮┃"
+ui_print "╱╱┃┃╱╱╰╮╭╮╭╯┃╰━━╮┃╭━╮┃┃┃┃╰╮┃╰━╯┃"
+ui_print "╱╱╰╯╱╱╱╰╯╰╯╱╰━━━╯╰╯╱╰╯╰╯╰━╯╰━━━╯"
 ui_print ""
 ui_print "- Niko Tweaks is a full featured Magisk module to enhance your device experience,"
 ui_print "- Improve your gaming, ram and battery!"
