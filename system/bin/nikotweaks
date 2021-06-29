@@ -1,5 +1,0 @@
-#!/system/bin/sh
-
-echo "Success!"
-sleep 2
-exit 1
