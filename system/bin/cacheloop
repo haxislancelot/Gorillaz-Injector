@@ -2,6 +2,7 @@
 clear
 
 while true; do
+sleep 300
 busybox rm -f /data/anr/*.*
 busybox rm -f /data/cache/*.*
 busybox rm -f /data/log/*.*
@@ -23,4 +24,7 @@ rm -rf /data/system/dropbox/*.txt
 rm -rf /data/backup/pending/*.tmp
 rm -rf /data/tombstones/*
 rm -rf /sdcard/LOST.DIR/*
+sync; echo 1 > /proc/sys/vm/drop_caches
+sync; echo 2 > /proc/sys/vm/drop_caches
+sync; echo 3 > /proc/sys/vm/drop_caches
 done
