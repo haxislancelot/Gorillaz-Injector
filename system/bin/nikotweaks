@@ -1,0 +1,776 @@
+#!/system/bin
+clear
+
+LOG=/sdcard/Niko Logs/nikotweaks.log
+
+date=$(date)
+echo "$date" > /sdcard/Niko Logs/Date
+user=`whoami`
+
+kmsg() {
+	echo "$@" >> $LOG
+	echo "$@"
+}
+
+kmsg1() {
+	echo "$@" >> $LOG
+	echo "$@"
+}
+
+kmsg "Niko Tweaks by haxislancelot @ GitHub."
+kmsg "Date of execution: $(date)"
+kmsg "Executed by:  $user"
+kmsg ""
+R='\e[01;91m' > /dev/null 2>&1;
+G='\e[01;92m' > /dev/null 2>&1;
+Y='\e[01;93m' > /dev/null 2>&1;
+B='\e[01;94m' > /dev/null 2>&1;
+W='\e[01;97m' > /dev/null 2>&1;
+C='\e[01;96m' > /dev/null 2>&1;
+D='\e[01;00m' > /dev/null 2>&1;
+
+echo "
+Loading…
+█▒▒▒▒▒▒▒▒▒
+"
+sleep 2.5
+clear
+echo "
+10%
+███▒▒▒▒▒▒▒
+"
+sleep 2
+clear
+echo "
+30%
+█████▒▒▒▒▒
+"
+sleep 1.5
+clear
+echo "
+50%
+███████▒▒▒
+"
+sleep 1.7
+clear
+echo "
+100%
+██████████
+"
+clear
+
+echo $C"
+╭━╮╱╭╮╭━━╮╭╮╭━╮╭━━━╮
+┃┃╰╮┃┃╰┫┣╯┃┃┃╭╯┃╭━╮┃
+┃╭╮╰╯┃╱┃┃╱┃╰╯╯╱┃┃╱┃┃
+┃┃╰╮┃┃╱┃┃╱┃╭╮┃╱┃┃╱┃┃
+┃┃╱┃┃┃╭┫┣╮┃┃┃╰╮┃╰━╯┃
+╰╯╱╰━╯╰━━╯╰╯╰━╯╰━━━╯
+╭━━━━╮╭╮╭╮╭╮╭━━━╮╭━━━╮╭╮╭━╮╭━━━╮
+┃╭╮╭╮┃┃┃┃┃┃┃┃╭━━╯┃╭━╮┃┃┃┃╭╯┃╭━╮┃
+╰╯┃┃╰╯┃┃┃┃┃┃┃╰━━╮┃┃╱┃┃┃╰╯╯╱┃╰━━╮
+╱╱┃┃╱╱┃╰╯╰╯┃┃╭━━╯┃╰━╯┃┃╭╮┃╱╰━━╮┃
+╱╱┃┃╱╱╰╮╭╮╭╯┃╰━━╮┃╭━╮┃┃┃┃╰╮┃╰━╯┃
+╱╱╰╯╱╱╱╰╯╰╯╱╰━━━╯╰╯╱╰╯╰╯╰━╯╰━━━╯
+by haxislancelot @ GitHub
+" $D
+
+batt=`cat /sys/class/power_supply/battery/capacity`
+tech= `cat /sys/class/power_supply/battery/technology`
+health=`cat /sys/class/power_supply/battery/health`
+temp=`cat /sys/class/power_supply/battery/temp`
+
+kmsg "
+echo ""
+echo "Battery Status:"
+echo ""
+echo "$batt%██████████"
+echo "Technology: $tech"
+echo "Temperature: $temp"
+echo ""
+sleep 1.7
+echo $R"Starting scripts"$D
+echo $C"..." 
+echo "...."$D
+"
+kmsg ""
+clear
+
+# Set permissions
+chmod 666 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+chmod 666 /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
+chmod 666 /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq
+chmod 666 /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq
+chmod 666 /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
+chmod 666 /sys/devices/system/cpu/cpu5/cpufreq/scaling_min_freq
+chmod 666 /sys/devices/system/cpu/cpu6/cpufreq/scaling_min_freq
+chmod 666 /sys/devices/system/cpu/cpu7/cpufreq/scaling_min_freq
+
+chmod 666 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+chmod 666 /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
+chmod 666 /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
+chmod 666 /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq
+chmod 666 /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
+chmod 666 /sys/devices/system/cpu/cpu5/cpufreq/scaling_max_freq
+chmod 666 /sys/devices/system/cpu/cpu6/cpufreq/scaling_max_freq
+chmod 666 /sys/devices/system/cpu/cpu7/cpufreq/scaling_max_freq
+
+# Set min and max clock
+echo 100000> /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+echo 100000> /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
+echo 100000> /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq
+echo 100000> /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq
+echo 100000> /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
+echo 100000> /sys/devices/system/cpu/cpu5/cpufreq/scaling_min_freq
+echo 100000> /sys/devices/system/cpu/cpu6/cpufreq/scaling_min_freq
+echo 100000> /sys/devices/system/cpu/cpu7/cpufreq/scaling_min_freq
+
+echo 4000000> /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+echo 4000000> /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
+echo 4000000> /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
+echo 4000000> /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq
+echo 4000000> /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
+echo 4000000> /sys/devices/system/cpu/cpu5/cpufreq/scaling_max_freq
+echo 4000000> /sys/devices/system/cpu/cpu6/cpufreq/scaling_max_freq
+echo 4000000> /sys/devices/system/cpu/cpu7/cpufreq/scaling_max_freq
+
+# Disable cpu and gpu dvfs
+chmod 0000 /proc/mali/dvfs_enable
+
+echo performance> /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+echo performance> /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
+echo performance> /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
+echo performance> /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
+echo performance> /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
+echo performance> /sys/devices/system/cpu/cpu5/cpufreq/scaling_governor
+echo performance> /sys/devices/system/cpu/cpu6/cpufreq/scaling_governor
+echo performance> /sys/devices/system/cpu/cpu7/cpufreq/scaling_governor
+
+# Disable always on for battery save
+chmod 0000 /proc/mali/always_on
+
+# Disable debug log 
+chmod 0000 /proc/mali/debug_log
+
+# Ipv4 config
+echo 1> /proc/sys/net/ipv4/icmp_echo_ignore_all
+echo 1> /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts
+echo 1> /proc/sys/net/ipv4/top_ecn
+echo 3> /proc/sys/net/ipv4/tcp_fastopen 
+echo 1> /proc/sys/net/ipv4/tcp_tw_reuse
+echo 1 /proc/sys/net/ipv4/tcp_sack
+echo 1> /proc/sys/net/ipv4/tcp_fack
+echo 3> /proc/sys/net/ipv4/tcp_fastopen
+echo 0> /proc/sys/net/ipv4/ip_no_pmtu_disc
+echo 1> /proc/sys/net/ipv4/tcp_ecn
+echo 0> /proc/sys/net/ipv4/tcp_timestamps
+echo 1> /proc/sys/net/ipv4/route.flush
+echo 1> /proc/sys/net/ipv4/tcp_rfc1337
+echo 1> /proc/sys/net/ipv4/tcp_tw_recycle
+echo 1> /proc/sys/net/ipv4/tcp_no_metrics_save
+echo 30> /proc/sys/net/ipv4/tcp_keepalive_intvl
+echo 30> /proc/sys/net/ipv4/tcp_fin_timeout
+echo 1> /proc/sys/net/ipv4/tcp_low_latency
+echo 0> /proc/sys/net/ipv4/tcp_syncookies
+echo 1> /proc/sys/net/ipv4/tcp_window_scaling
+echo 10> /proc/sys/net/ipv4/tcp_keepalive_probes
+echo bbr2> /proc/sys/net/ipv4/tcp_congestion_control
+
+# Set cpu online
+echo 1> /sys/devices/system/cpu/cpu0/online
+echo 1> /sys/devices/system/cpu/cpu1/online
+echo 1> /sys/devices/system/cpu/cpu2/online
+echo 1> /sys/devices/system/cpu/cpu3/online
+echo 1> /sys/devices/system/cpu/cpu4/online
+echo 1> /sys/devices/system/cpu/cpu5/online
+echo 1> /sys/devices/system/cpu/cpu6/online
+echo 1> /sys/devices/system/cpu/cpu7/online
+
+# IO SCHEDULER
+echo 0> /sys/block/dm-0/queue/add_random
+echo 0> /sys/block/dm-8/queue/add_random   
+echo 0> /sys/block/loop2/queue/add_random   
+echo 0> /sys/block/loop7/queue/add_random            
+echo 0> /sys/block/ram14/queue/add_random    
+echo 0> /sys/block/dm-1/queue/add_random   
+echo 0> /sys/block/dm-9/queue/add_random     
+echo 0> /sys/block/loop20/queue/add_random     
+echo 0> /sys/block/loop8/queue/add_random            
+echo 0> /sys/block/ram15/queue/add_random   
+echo 0> /sys/block/dm-10/queue/add_random     
+echo 0> /sys/block/loop0/queue/add_random      
+echo 0> /sys/block/loop21/queue/add_random     
+echo 0> /sys/block/loop9/queue/add_random            
+echo 0> /sys/block/ram2/queue/add_random                  
+echo 0> /sys/block/dm-11/queue/add_random   
+echo 0> /sys/block/loop1/queue/add_random      
+echo 0> /sys/block/loop22/queue/add_random     
+echo 0> /sys/block/mmcblk0/queue/add_random          
+echo 0> /sys/block/ram3/queue/add_random   
+echo 0> /sys/block/dm-12/queue/add_random     
+echo 0> /sys/block/loop10/queue/add_random     
+echo 0> /sys/block/loop23/queue/add_random     
+echo 0> /sys/block/mmcblk0boot0/queue/add_random     
+echo 0> /sys/block/ram4/queue/add_random                    
+echo 0> /sys/block/dm-13/queue/add_random     
+echo 0> /sys/block/loop11/queue/add_random       
+echo 0> /sys/block/loop24/queue/add_random       
+echo 0> /sys/block/mmcblk0boot1/queue/add_random     
+echo 0> /sys/block/ram5/queue/add_random     
+echo 0> /sys/block/dm-14/queue/add_random       
+echo 0> /sys/block/loop12/queue/add_random       
+echo 0> /sys/block/loop25/queue/add_random       
+echo 0> /sys/block/mmcblk0rpmb/queue/add_random        
+echo 0> /sys/block/ram6/queue/add_random                       
+echo 0> /sys/block/dm-15/queue/add_random        
+echo 0> /sys/block/loop13/queue/add_random          
+echo 0> /sys/block/loop26/queue/add_random          
+echo 0> /sys/block/mmcblk1/queue/add_random               
+echo 0> /sys/block/ram7/queue/add_random        
+echo 0> /sys/block/dm-2/queue/add_random           
+echo 0> /sys/block/loop14/queue/add_random          
+echo 0> /sys/block/loop27/queue/add_random          
+echo 0> /sys/block/ram0/queue/add_random                  
+echo 0> /sys/block/ram8/queue/add_random                       
+echo 0> /sys/block/dm-3/queue/add_random        
+echo 0> /sys/block/loop15/queue/add_random          
+echo 0> /sys/block/loop28/queue/add_random          
+echo 0> /sys/block/ram1/queue/add_random                  
+echo 0> /sys/block/ram9/queue/add_random        
+echo 0> /sys/block/dm-4/queue/add_random           
+echo 0> /sys/block/loop16/queue/add_random          
+echo 0> /sys/block/loop3/queue/add_random           
+echo 0> /sys/block/ram10/queue/add_random                 
+echo 0> /sys/block/zram0/queue/add_random                      
+echo 0> /sys/block/dm-5/queue/add_random        
+echo 0> /sys/block/loop17/queue/add_random          
+echo 0> /sys/block/loop4/queue/add_random           
+echo 0> /sys/block/ram11/queue/add_random        
+echo 0> /sys/block/dm-6/queue/add_random           
+echo 0> /sys/block/loop18/queue/add_random          
+echo 0> /sys/block/loop5/queue/add_random           
+echo 0> /sys/block/ram12/queue/add_random                                    
+echo 0> /sys/block/dm-7/queue/add_random        
+echo 0> /sys/block/loop19/queue/add_random          
+echo 0> /sys/block/loop6/queue/add_random           
+echo 0> /sys/block/ram13/queue/add_random        
+
+echo 0> /sys/block/dm-0/queue/iostats
+echo 0> /sys/block/dm-8/queue/iostats   
+echo 0> /sys/block/loop2/queue/iostats   
+echo 0> /sys/block/loop7/queue/iostats            
+echo 0> /sys/block/ram14/queue/iostats    
+echo 0> /sys/block/dm-1/queue/iostats   
+echo 0> /sys/block/dm-9/queue/iostats     
+echo 0> /sys/block/loop20/queue/iostats     
+echo 0> /sys/block/loop8/queue/iostats            
+echo 0> /sys/block/ram15/queue/iostats   
+echo 0> /sys/block/dm-10/queue/iostats     
+echo 0> /sys/block/loop0/queue/iostats      
+echo 0> /sys/block/loop21/queue/iostats     
+echo 0> /sys/block/loop9/queue/iostats            
+echo 0> /sys/block/ram2/queue/iostats                  
+echo 0> /sys/block/dm-11/queue/iostats   
+echo 0> /sys/block/loop1/queue/iostats      
+echo 0> /sys/block/loop22/queue/iostats     
+echo 0> /sys/block/mmcblk0/queue/iostats          
+echo 0> /sys/block/ram3/queue/iostats   
+echo 0> /sys/block/dm-12/queue/iostats     
+echo 0> /sys/block/loop10/queue/iostats     
+echo 0> /sys/block/loop23/queue/iostats     
+echo 0> /sys/block/mmcblk0boot0/queue/iostats     
+echo 0> /sys/block/ram4/queue/iostats                    
+echo 0> /sys/block/dm-13/queue/iostats     
+echo 0> /sys/block/loop11/queue/iostats       
+echo 0> /sys/block/loop24/queue/iostats       
+echo 0> /sys/block/mmcblk0boot1/queue/iostats     
+echo 0> /sys/block/ram5/queue/iostats     
+echo 0> /sys/block/dm-14/queue/iostats       
+echo 0> /sys/block/loop12/queue/iostats       
+echo 0> /sys/block/loop25/queue/iostats       
+echo 0> /sys/block/mmcblk0rpmb/queue/iostats        
+echo 0> /sys/block/ram6/queue/iostats                       
+echo 0> /sys/block/dm-15/queue/iostats        
+echo 0> /sys/block/loop13/queue/iostats          
+echo 0> /sys/block/loop26/queue/iostats          
+echo 0> /sys/block/mmcblk1/queue/iostats               
+echo 0> /sys/block/ram7/queue/iostats        
+echo 0> /sys/block/dm-2/queue/iostats           
+echo 0> /sys/block/loop14/queue/iostats          
+echo 0> /sys/block/loop27/queue/iostats          
+echo 0> /sys/block/ram0/queue/iostats                  
+echo 0> /sys/block/ram8/queue/iostats                       
+echo 0> /sys/block/dm-3/queue/iostats        
+echo 0> /sys/block/loop15/queue/iostats          
+echo 0> /sys/block/loop28/queue/iostats          
+echo 0> /sys/block/ram1/queue/iostats                  
+echo 0> /sys/block/ram9/queue/iostats        
+echo 0> /sys/block/dm-4/queue/iostats           
+echo 0> /sys/block/loop16/queue/iostats          
+echo 0> /sys/block/loop3/queue/iostats           
+echo 0> /sys/block/ram10/queue/iostats                 
+echo 0> /sys/block/zram0/queue/iostats                      
+echo 0> /sys/block/dm-5/queue/iostats        
+echo 0> /sys/block/loop17/queue/iostats          
+echo 0> /sys/block/loop4/queue/iostats           
+echo 0> /sys/block/ram11/queue/iostats        
+echo 0> /sys/block/dm-6/queue/iostats           
+echo 0> /sys/block/loop18/queue/iostats          
+echo 0> /sys/block/loop5/queue/iostats           
+echo 0> /sys/block/ram12/queue/iostats                                    
+echo 0> /sys/block/dm-7/queue/iostats        
+echo 0> /sys/block/loop19/queue/iostats          
+echo 0> /sys/block/loop6/queue/iostats           
+echo 0> /sys/block/ram13/queue/iostats        
+
+echo 512> /sys/block/dm-0/queue/read_ahead_kb
+echo 512> /sys/block/dm-8/queue/read_ahead_kb   
+echo 512> /sys/block/loop2/queue/read_ahead_kb   
+echo 512> /sys/block/loop7/queue/read_ahead_kb            
+echo 512> /sys/block/ram14/queue/read_ahead_kb    
+echo 512> /sys/block/dm-1/queue/read_ahead_kb   
+echo 512> /sys/block/dm-9/queue/read_ahead_kb     
+echo 512> /sys/block/loop20/queue/read_ahead_kb     
+echo 512> /sys/block/loop8/queue/read_ahead_kb            
+echo 512> /sys/block/ram15/queue/read_ahead_kb   
+echo 512> /sys/block/dm-10/queue/read_ahead_kb     
+echo 512> /sys/block/loop0/queue/read_ahead_kb      
+echo 512> /sys/block/loop21/queue/read_ahead_kb     
+echo 512> /sys/block/loop9/queue/read_ahead_kb            
+echo 512> /sys/block/ram2/queue/read_ahead_kb                  
+echo 512> /sys/block/dm-11/queue/read_ahead_kb   
+echo 512> /sys/block/loop1/queue/read_ahead_kb      
+echo 512> /sys/block/loop22/queue/read_ahead_kb     
+echo 512> /sys/block/mmcblk0/queue/read_ahead_kb          
+echo 512> /sys/block/ram3/queue/read_ahead_kb   
+echo 512> /sys/block/dm-12/queue/read_ahead_kb     
+echo 512> /sys/block/loop10/queue/read_ahead_kb     
+echo 512> /sys/block/loop23/queue/read_ahead_kb     
+echo 512> /sys/block/mmcblk0boot0/queue/read_ahead_kb     
+echo 512> /sys/block/ram4/queue/read_ahead_kb                    
+echo 512> /sys/block/dm-13/queue/read_ahead_kb     
+echo 512> /sys/block/loop11/queue/read_ahead_kb       
+echo 512> /sys/block/loop24/queue/read_ahead_kb       
+echo 512> /sys/block/mmcblk0boot1/queue/read_ahead_kb     
+echo 512> /sys/block/ram5/queue/read_ahead_kb     
+echo 512> /sys/block/dm-14/queue/read_ahead_kb       
+echo 512> /sys/block/loop12/queue/read_ahead_kb       
+echo 512> /sys/block/loop25/queue/read_ahead_kb       
+echo 512> /sys/block/mmcblk0rpmb/queue/read_ahead_kb        
+echo 512> /sys/block/ram6/queue/read_ahead_kb                       
+echo 512> /sys/block/dm-15/queue/read_ahead_kb        
+echo 512> /sys/block/loop13/queue/read_ahead_kb          
+echo 512> /sys/block/loop26/queue/read_ahead_kb          
+echo 512> /sys/block/mmcblk1/queue/read_ahead_kb               
+echo 512> /sys/block/ram7/queue/read_ahead_kb        
+echo 512> /sys/block/dm-2/queue/read_ahead_kb           
+echo 512> /sys/block/loop14/queue/read_ahead_kb          
+echo 512> /sys/block/loop27/queue/read_ahead_kb          
+echo 512> /sys/block/ram0/queue/read_ahead_kb                  
+echo 512> /sys/block/ram8/queue/read_ahead_kb                       
+echo 512> /sys/block/dm-3/queue/read_ahead_kb        
+echo 512> /sys/block/loop15/queue/read_ahead_kb          
+echo 512> /sys/block/loop28/queue/read_ahead_kb          
+echo 512> /sys/block/ram1/queue/read_ahead_kb                  
+echo 512> /sys/block/ram9/queue/read_ahead_kb        
+echo 512> /sys/block/dm-4/queue/read_ahead_kb           
+echo 512> /sys/block/loop16/queue/read_ahead_kb          
+echo 512> /sys/block/loop3/queue/read_ahead_kb           
+echo 512> /sys/block/ram10/queue/read_ahead_kb                 
+echo 512> /sys/block/zram0/queue/read_ahead_kb                      
+echo 512> /sys/block/dm-5/queue/read_ahead_kb        
+echo 512> /sys/block/loop17/queue/read_ahead_kb          
+echo 512> /sys/block/loop4/queue/read_ahead_kb           
+echo 512> /sys/block/ram11/queue/read_ahead_kb        
+echo 512> /sys/block/dm-6/queue/read_ahead_kb           
+echo 512> /sys/block/loop18/queue/read_ahead_kb          
+echo 512> /sys/block/loop5/queue/read_ahead_kb           
+echo 512> /sys/block/ram12/queue/read_ahead_kb                                    
+echo 512> /sys/block/dm-7/queue/read_ahead_kb        
+echo 512> /sys/block/loop19/queue/read_ahead_kb          
+echo 512> /sys/block/loop6/queue/read_ahead_kb           
+echo 512> /sys/block/ram13/queue/read_ahead_kb        
+
+echo 2> /sys/block/dm-0/queue/nomerges
+echo 2> /sys/block/dm-8/queue/nomerges
+echo 2> /sys/block/loop2/queue/nomerges
+echo 2> /sys/block/loop7/queue/nomerges            
+echo 2> /sys/block/ram14/queue/nomerges    
+echo 2> /sys/block/dm-1/queue/nomerges   
+echo 2> /sys/block/dm-9/queue/nomerges     
+echo 2> /sys/block/loop20/queue/nomerges     
+echo 2> /sys/block/loop8/queue/nomerges            
+echo 2> /sys/block/ram15/queue/nomerges   
+echo 2> /sys/block/dm-10/queue/nomerges     
+echo 2> /sys/block/loop0/queue/nomerges      
+echo 2> /sys/block/loop21/queue/nomerges     
+echo 2> /sys/block/loop9/queue/nomerges            
+echo 2> /sys/block/ram2/queue/nomerges                  
+echo 2> /sys/block/dm-11/queue/nomerges   
+echo 2> /sys/block/loop1/queue/nomerges      
+echo 2> /sys/block/loop22/queue/nomerges     
+echo 2> /sys/block/mmcblk0/queue/nomerges          
+echo 2> /sys/block/ram3/queue/nomerges   
+echo 2> /sys/block/dm-12/queue/nomerges     
+echo 2> /sys/block/loop10/queue/nomerges     
+echo 2> /sys/block/loop23/queue/nomerges     
+echo 2> /sys/block/mmcblk0boot0/queue/nomerges     
+echo 2> /sys/block/ram4/queue/nomerges                    
+echo 2> /sys/block/dm-13/queue/nomerges     
+echo 2> /sys/block/loop11/queue/nomerges       
+echo 2> /sys/block/loop24/queue/nomerges       
+echo 2> /sys/block/mmcblk0boot1/queue/nomerges     
+echo 2> /sys/block/ram5/queue/nomerges     
+echo 2> /sys/block/dm-14/queue/nomerges       
+echo 2> /sys/block/loop12/queue/nomerges       
+echo 2> /sys/block/loop25/queue/nomerges       
+echo 2> /sys/block/mmcblk0rpmb/queue/nomerges        
+echo 2> /sys/block/ram6/queue/nomerges                       
+echo 2> /sys/block/dm-15/queue/nomerges        
+echo 2> /sys/block/loop13/queue/nomerges          
+echo 2> /sys/block/loop26/queue/nomerges          
+echo 2> /sys/block/mmcblk1/queue/nomerges               
+echo 2> /sys/block/ram7/queue/nomerges        
+echo 2> /sys/block/dm-2/queue/nomerges           
+echo 2> /sys/block/loop14/queue/nomerges          
+echo 2> /sys/block/loop27/queue/nomerges          
+echo 2> /sys/block/ram0/queue/nomerges                  
+echo 2> /sys/block/ram8/queue/nomerges                       
+echo 2> /sys/block/dm-3/queue/nomerges        
+echo 2> /sys/block/loop15/queue/nomerges          
+echo 2> /sys/block/loop28/queue/nomerges          
+echo 2> /sys/block/ram1/queue/nomerges                  
+echo 2> /sys/block/ram9/queue/nomerges        
+echo 2> /sys/block/dm-4/queue/nomerges           
+echo 2> /sys/block/loop16/queue/nomerges          
+echo 2> /sys/block/loop3/queue/nomerges           
+echo 2> /sys/block/ram10/queue/nomerges                 
+echo 2> /sys/block/zram0/queue/nomerges                      
+echo 2> /sys/block/dm-5/queue/nomerges        
+echo 2> /sys/block/loop17/queue/nomerges          
+echo 2> /sys/block/loop4/queue/nomerges           
+echo 2> /sys/block/ram11/queue/nomerges        
+echo 2> /sys/block/dm-6/queue/nomerges           
+echo 2> /sys/block/loop18/queue/nomerges          
+echo 2> /sys/block/loop5/queue/nomerges           
+echo 2> /sys/block/ram12/queue/nomerges                                    
+echo 2> /sys/block/dm-7/queue/nomerges        
+echo 2> /sys/block/loop19/queue/nomerges          
+echo 2> /sys/block/loop6/queue/nomerges           
+echo 2> /sys/block/ram13/queue/nomerges        
+
+echo 2> /sys/block/dm-0/queue/rq_affinity
+echo 2> /sys/block/dm-8/queue/rq_affinity   
+echo 2> /sys/block/loop2/queue/rq_affinity   
+echo 2> /sys/block/loop7/queue/rq_affinity            
+echo 2> /sys/block/ram14/queue/rq_affinity    
+echo 2> /sys/block/dm-1/queue/rq_affinity   
+echo 2> /sys/block/dm-9/queue/rq_affinity     
+echo 2> /sys/block/loop20/queue/rq_affinity     
+echo 2> /sys/block/loop8/queue/rq_affinity            
+echo 2> /sys/block/ram15/queue/rq_affinity   
+echo 2> /sys/block/dm-10/queue/rq_affinity     
+echo 2> /sys/block/loop0/queue/rq_affinity      
+echo 2> /sys/block/loop21/queue/rq_affinity     
+echo 2> /sys/block/loop9/queue/rq_affinity            
+echo 2> /sys/block/ram2/queue/rq_affinity                  
+echo 2> /sys/block/dm-11/queue/rq_affinity   
+echo 2> /sys/block/loop1/queue/rq_affinity      
+echo 2> /sys/block/loop22/queue/rq_affinity     
+echo 2> /sys/block/mmcblk0/queue/rq_affinity          
+echo 2> /sys/block/ram3/queue/rq_affinity   
+echo 2> /sys/block/dm-12/queue/rq_affinity     
+echo 2> /sys/block/loop10/queue/rg_affinity     
+echo 2> /sys/block/loop23/queue/rq_affinity     
+echo 2> /sys/block/mmcblk0boot0/queue/rq_affinity     
+echo 2> /sys/block/ram4/queue/rq_affinity                    
+echo 2> /sys/block/dm-13/queue/rq_affinity     
+echo 2> /sys/block/loop11/queue/rq_affinity       
+echo 2> /sys/block/loop24/queue/rq_affinity       
+echo 2> /sys/block/mmcblk0boot1/queue/rq_affinity     
+echo 2> /sys/block/ram5/queue/rq_affinity     
+echo 2> /sys/block/dm-14/queue/rq_affinity       
+echo 2> /sys/block/loop12/queue/rq_affinity       
+echo 2> /sys/block/loop25/queue/rq_affinity       
+echo 2> /sys/block/mmcblk0rpmb/queue/rq_affinity        
+echo 2> /sys/block/ram6/queue/rq_affinity                       
+echo 2> /sys/block/dm-15/queue/rq_affinity        
+echo 2> /sys/block/loop13/queue/rq_affinity          
+echo 2> /sys/block/loop26/queue/rq_affinity          
+echo 2> /sys/block/mmcblk1/queue/rq_affinity               
+echo 2> /sys/block/ram7/queue/rq_affinity        
+echo 2> /sys/block/dm-2/queue/rq_affinity           
+echo 2> /sys/block/loop14/queue/rq_affinity          
+echo 2> /sys/block/loop27/queue/rq_affinity          
+echo 2> /sys/block/ram0/queue/rq_affinity                  
+echo 2> /sys/block/ram8/queue/rq_affinity                       
+echo 2> /sys/block/dm-3/queue/rq_affinity        
+echo 2> /sys/block/loop15/queue/rq_affinity          
+echo 2> /sys/block/loop28/queue/rq_affinity          
+echo 2> /sys/block/ram1/queue/rq_affinity                  
+echo 2> /sys/block/ram9/queue/rq_affinity        
+echo 2> /sys/block/dm-4/queue/rq_affinity           
+echo 2> /sys/block/loop16/queue/rq_affinity          
+echo 2> /sys/block/loop3/queue/rq_affinity           
+echo 2> /sys/block/ram10/queue/rq_affinity                 
+echo 2> /sys/block/zram0/queue/rq_affinity                      
+echo 2> /sys/block/dm-5/queue/rq_affinity        
+echo 2> /sys/block/loop17/queue/rq_affinity          
+echo 2> /sys/block/loop4/queue/rq_affinity           
+echo 2> /sys/block/ram11/queue/rq_affinity        
+echo 2> /sys/block/dm-6/queue/rq_affinity           
+echo 2> /sys/block/loop18/queue/rq_affinity          
+echo 2> /sys/block/loop5/queue/rq_affinity           
+echo 2> /sys/block/ram12/queue/rq_affinity                                    
+echo 2> /sys/block/dm-7/queue/rq_affinity        
+echo 2> /sys/block/loop19/queue/rq_affinity          
+echo 2> /sys/block/loop6/queue/rq_affinity           
+echo 2> /sys/block/ram13/queue/rq_affinity        
+
+echo 256> /sys/block/dm-0/queue/nr_requests
+echo 256> /sys/block/dm-8/queue/nr_requests   
+echo 256> /sys/block/loop2/queue/nr_requests   
+echo 256> /sys/block/loop7/queue/nr_requests            
+echo 256> /sys/block/ram14/queue/nr_requests    
+echo 256> /sys/block/dm-1/queue/nr_requests   
+echo 256> /sys/block/dm-9/queue/nr_requests     
+echo 256> /sys/block/loop20/queue/nr_requests     
+echo 256> /sys/block/loop8/queue/nr_requests            
+echo 256> /sys/block/ram15/queue/nr_requests   
+echo 256> /sys/block/dm-10/queue/nr_requests     
+echo 256> /sys/block/loop0/queue/nr_requests      
+echo 256> /sys/block/loop21/queue/nr_requests     
+echo 256> /sys/block/loop9/queue/nr_requests            
+echo 256> /sys/block/ram2/queue/nr_requests                  
+echo 256> /sys/block/dm-11/queue/nr_requests   
+echo 256> /sys/block/loop1/queue/nr_requests      
+echo 256> /sys/block/loop22/queue/nr_requests     
+echo 256> /sys/block/mmcblk0/queue/nr_requests          
+echo 256> /sys/block/ram3/queue/nr_requests   
+echo 256> /sys/block/dm-12/queue/nr_requests     
+echo 256> /sys/block/loop10/queue/nr_requests     
+echo 256> /sys/block/loop23/queue/nr_requests     
+echo 256> /sys/block/mmcblk0boot0/queue/nr_requests     
+echo 256> /sys/block/ram4/queue/nr_requests                    
+echo 256> /sys/block/dm-13/queue/nr_requests     
+echo 256> /sys/block/loop11/queue/nr_requests       
+echo 256> /sys/block/loop24/queue/nr_requests       
+echo 256> /sys/block/mmcblk0boot1/queue/nr_requests     
+echo 256> /sys/block/ram5/queue/nr_requests     
+echo 256> /sys/block/dm-14/queue/nr_requests       
+echo 256> /sys/block/loop12/queue/nr_requests       
+echo 256> /sys/block/loop25/queue/nr_requests       
+echo 256> /sys/block/mmcblk0rpmb/queue/nr_requests        
+echo 256> /sys/block/ram6/queue/nr_requests                       
+echo 256> /sys/block/dm-15/queue/nr_requests        
+echo 256> /sys/block/loop13/queue/nr_requests          
+echo 256> /sys/block/loop26/queue/nr_requests          
+echo 256> /sys/block/mmcblk1/queue/nr_requests               
+echo 256> /sys/block/ram7/queue/nr_requests        
+echo 256> /sys/block/dm-2/queue/nr_requests           
+echo 256> /sys/block/loop14/queue/nr_requests          
+echo 256> /sys/block/loop27/queue/nr_requests          
+echo 256> /sys/block/ram0/queue/nr_requests                  
+echo 256> /sys/block/ram8/queue/nr_requests                       
+echo 256> /sys/block/dm-3/queue/nr_requests        
+echo 256> /sys/block/loop15/queue/nr_requests          
+echo 256> /sys/block/loop28/queue/nr_requests          
+echo 256> /sys/block/ram1/queue/nr_requests                  
+echo 256> /sys/block/ram9/queue/nr_requests        
+echo 256> /sys/block/dm-4/queue/nr_requests           
+echo 256> /sys/block/loop16/queue/nr_requests          
+echo 256> /sys/block/loop3/queue/nr_requests           
+echo 256> /sys/block/ram10/queue/nr_requests                 
+echo 256> /sys/block/zram0/queue/nr_requests                      
+echo 256> /sys/block/dm-5/queue/nr_requests        
+echo 256> /sys/block/loop17/queue/nr_requests          
+echo 256> /sys/block/loop4/queue/nr_requests           
+echo 512> /sys/block/ram11/queue/nr_requests        
+echo 256> /sys/block/dm-6/queue/nr_requests           
+echo 256> /sys/block/loop18/queue/nr_requests          
+echo 256> /sys/block/loop5/queue/nr_requests           
+echo 256> /sys/block/ram12/queue/nr_requests                                    
+echo 256> /sys/block/dm-7/queue/nr_requests        
+echo 256> /sys/block/loop19/queue/nr_requests          
+echo 256> /sys/block/loop6/queue/nr_requests           
+echo 256> /sys/block/ram13/queue/nr_requests  
+
+# Governor config
+echo 500> /sys/devices/system/cpu/cpufreq/schedutil/up_rate_limit_us
+echo 20000> /sys/devices/system/cpu/cpufreq/schedutil/down_rate_limit_us
+echo 1> /sys/devices/system/cpu/cpufreq/schedutil/pl
+echo 1> /sys/devices/system/cpu/cpufreq/schedutil/iowait_boost_enable
+echo 20000> /sys/devices/system/cpu/cpufreq/schedutil/rate_limit_us
+echo 80> /sys/devices/system/cpu/cpufreq/schedutil/hispeed_load
+
+echo 20000> /sys/devices/system/cpu/cpufreq/interactive/timer_rate
+echo 1> /sys/devices/system/cpu/cpufreq/interactive/boost
+echo 20000> /sys/devices/system/cpu/cpufreq/interactive/timer_slack
+echo 1> /sys/devices/system/cpu/cpufreq/interactive/use_migration_notif
+echo 1> /sys/devices/system/cpu/cpufreq/interactive/use_sched_load
+echo 1> /sys/devices/system/cpu/cpufreq/interactive/ignore_hispeed_on_notif
+echo 0> /sys/devices/system/cpu/cpufreq/interactive/boostpulse
+echo 1> /sys/devices/system/cpu/cpufreq/interactive/fastlane
+echo 0> /sys/devices/system/cpu/cpufreq/interactive/fast_ramp_down
+echo 20000> /sys/devices/system/cpu/cpufreq/interactive/sampling_rate
+echo 20000> /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
+echo 80> /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
+echo 80> /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
+
+# Gpu max and min clock (Adreno)
+echo 1500> /sys/kernel/gpu/gpu_max_clock
+echo 133> /sys/kernel/gpu/gpu_max_clock
+
+# Gpu tweaks (Adreno)
+echo 100000000> /sys/devices/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/devfreq/min_freq
+echo 1> /sys/devices/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/default_pwrlevel
+echo 0> /sys/devices/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/force_bus_on
+echo 0> /sys/devices/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/force_clk_on
+echo 0> /sys/devices/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/force_rail_on
+echo 146> /sys/devices/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/idle_timer
+echo 0> /sys/devices/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/throttling
+echo 0> /sys/devices/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/thermal_pwrlevel
+echo 1> /sys/devices/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/devfreq/adrenoboost
+echo 0> /sys/devices/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/force_no_nap
+echo 0> /sys/devices/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/bus_split
+
+# Gpu tweaks (Mali)
+echo 100000000> /sys/devices/sys/devices/platform/13040000.mali/devfreq/min_freq
+echo 1> /sys/devices/platform/13040000.mali/default_pwrlevel
+chmod 0000 /sys/devices/platform/13040000.mali/force_bus_on
+chmod 0000 /sys/devices/platform/13040000.mali/force_clk_on
+chmod 0000 /sys/devices/platform/13040000.mali/force_rail_on
+chmod 0000 /sys/devices/platform/13040000.mali/throttling
+chmod 0000 /sys/devices/platform/13040000.mali/thermal_pwrlevel
+chmod 0000 /sys/devices/platform/13040000.mali/force_no_nap
+chmod 0000 /sys/devices/platform/13040000.mali/bus_split
+echo 146> /sys/devices/platform/13040000.mali/idle_timer
+echo coarse_demand> /sys/devices/platform/13040000.mali/power_policy
+echo 1400000> /sys/devices/platform/13040000.mali/highspeed_clock
+echo 75> /sys/devices/platform/13040000.mali/highspeed_load
+echo 0> /sys/devices/platform/13040000.mali/tmu
+
+echo 100000000> /sys/devices/sys/devices/platform/13040000.mali/devfreq/min_freq
+echo 1> /sys/devices/platform/11500000.mali/default_pwrlevel
+chmod 0000 /sys/devices/platform/11500000.mali/force_bus_on
+chmod 0000 /sys/devices/platform/11500000.mali/force_clk_on
+chmod 0000 /sys/devices/platform/11500000.mali/force_rail_on
+chmod 0000 /sys/devices/platform/11500000.mali/throttling
+chmod 0000 /sys/devices/platform/11500000.mali/thermal_pwrlevel
+chmod 0000 /sys/devices/platform/11500000.mali/force_no_nap
+chmod 0000 /sys/devices/platform/11500000.mali/bus_split
+echo 146> /sys/devices/platform/11500000.mali/idle_timer
+echo 1400000> /sys/devices/platform/11500000.mali/highspeed_clock
+echo 75> /sys/devices/platform/11500000.mali/highspeed_load
+echo 0> /sys/devices/platform/11500000.mali/tmu
+echo coarse_demand> /sys/devices/platform/11500000.mali/power_policy
+
+
+# Disable dvfs 2
+echo 0> /sys/module/pvrsrvkm/parameters/gpu_dvfs_enable
+echo 0> /proc/mali/dvfs_enable
+echo 0> /sys/module/simple_gpu_algorithm/parameters/simple_gpu_activate
+
+# Schedtune tweaks
+echo 0> /dev/stune/background/schedtune.boost
+echo 0> /dev/stune/background/schedtune.prefer_idle
+
+echo 50> /dev/stune/foreground/schedtune.boost
+echo 0> /dev/stune/foreground/schedtune.prefer_idle
+
+echo 0> /dev/stune/rt/schedtune.boost
+echo 0> /dev/stune/rt/schedtune.prefer_idle
+
+echo 50> /dev/stune/top-app/schedtune.boost
+
+echo 0> /dev/stune/schedtune.boost
+echo 0> /dev/stune/schedtune.prefer_idle
+
+# Fs tweaks
+echo 0> /proc/sys/fs/dir-notify-enable
+echo 20> /proc/sys/fs/lease-break-time
+echo 1> /proc/sys/fs/leases-enable
+
+# Enable dinamic fsync
+echo 1> /sys/kernel/dyn_fsync/Dyn_fsync_active
+
+# Sched features
+echo NEXT_BUDDY> /sys/kernel/debug/sched_features
+echo TTWU_QUEUE> /sys/kernel/debug/sched_features
+echo NO_GENTLE_FAIR_SLEEPERS> /sys/kernel/debug/sched_features
+echo NO_WAKEUP_PREEMPTION> /sys/kernel/debug/sched_features
+echo 0> /proc/sys/kernel/sched_child_runs_first
+echo 1> /proc/sys/kernel/sched_boost
+echo 25> /proc/sys/kernel/perf_cpu_time_max_percent
+echo 1> /proc/sys/kernel/sched_autogroup_enabled
+echo 128> /proc/sys/kernel/random/read_wakeup_threshold
+echo 1024> /proc/sys/kernel/random/write_wakeup_threshold
+echo 90> /proc/sys/kernel/random/urandom_min_reseed_secs
+echo 0> /proc/sys/kernel/sched_tunable_scaling
+echo $SCHED_PERIOD_THROUGHPUT> /proc/sys/kernel/sched_latency_ns
+echo $((SCHED_PERIOD_THROUGHPUT / SCHED_TASKS_THROUGHPUT))> /proc/sys/kernel/sched_min_granularity_ns
+echo $((SCHED_PERIOD_THROUGHPUT / 2))> /proc/sys/kernel/sched_wakeup_granularity_ns
+echo 5000000> /proc/sys/kernel/sched_migration_cost_ns
+echo 0> /proc/sys/kernel/sched_min_task_util_for_colocation
+echo 128> /proc/sys/kernel/sched_nr_migrate
+echo 0> /proc/sys/kernel/sched_schedstats
+echo 0> /proc/sys/kernel/sched_sync_hint_enable
+echo 0> /proc/sys/kernel/sched_user_hint
+echo 0> /proc/sys/kernel/sched_conservative_pl
+echo off> /proc/sys/kernel/printk_devkmsg
+echo 1> /sys/kernel/fp_boost/enabled
+
+# Deepest state
+echo 0> /sys/devices/system/cpu/cpuidle/use_deepest_state
+
+# Krait voltage boost
+echo Y > /sys/module/acpuclock_krait/parameters/boost
+
+# Vm tweaks
+echo 3> /proc/sys/vm/drop_caches
+echo 5> /proc/sys/vm/dirty_background_ratio
+echo 30> /proc/sys/vm/dirty_ratio
+echo 500> /proc/sys/vm/dirty_expire_centisecs
+echo 3000> /proc/sys/vm/dirty_writeback_centisecs
+echo 0> /proc/sys/vm/page-cluster
+echo 60> /proc/sys/vm/stat_interval
+echo 100> /proc/sys/vm/swappiness
+echo 0> /proc/sys/vm/laptop_mode
+echo 80> /proc/sys/vm/vfs_cache_pressure
+
+# Disable thermal for snapdragon
+echo 0> /sys/module/msm_thermal/vdd_restriction/enabled 
+echo 0> /sys/module/msm_thermal/core_control/enabled 
+echo N> /sys/module/msm_thermal/parameters/enabled 
+
+# Disable power efficient
+echo N> /sys/module/workqueue/parameters/power_efficient
+echo 0> /sys/devices/system/cpu/sched_mc_power_savings
+echo N> /sys/module/battery_saver/parameters/enabled
+echo 0> /sys/kernel/sched/arch_power
+echo Y> /sys/module/lpm_levels/parameters/sleep_disabled
+echo N> /sys/module/pm2/parameters/idle_sleep_mode
+echo 0> /sys/class/lcd/panel/power_reduce
+echo 0> /sys/kernel/sched/gentle_fair_sleepers
+
+# Touch tweaks
+echo 1> /proc/tp_gesture
+echo 1> /proc/tp_gesture
+echo 1> /sys/module/msm_performance/parameters/touchboost
+echo 1> /sys/power/pnpmgr/touch_boost
+echo 1> /sys/touchpanel/double_tap
+
+# Enable uksm and ksm
+echo 1 > /sys/kernel/mm/uksm/run
+echo 1> /sys/kernel/mm/ksm/run
+
+# Force fast charge
+echo 1> /sys/kernel/fast_charge/force_fast_charge
+
+# Dynamic Stune Boost
+echo 10> /sys/module/cpu_boost/parameters/dynamic_stune_boost
+
+echo "Successfully executed!"
+echo "Logs are saved in /sdcard/Niko Logs"
+kmsg "Successfully executed!"
+exit 1
